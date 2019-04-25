@@ -1,0 +1,27 @@
+# Ignore Play! working directory #
+*/bin/
+!zookeeper/bin/
+!templates/bin/
+/db
+.eclipse
+/logs/
+/modules
+/project/project
+/project/target
+/target/
+tmp/
+test-result
+server.pid
+*.iml
+*.eml
+*.zip
+/dist/
+.cache
+*.log
+/.vagrant/
+/resolution-cache/
+/streams/
+.idea/
+/*/target
+/preprocess/basistech
+/zookeeper/bin/data

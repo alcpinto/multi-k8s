@@ -1,0 +1,25 @@
+sudo: required
+services:
+  - docker
+
+
+before_install:
+  - docker build -t alcpinto/react-test -f ./client/Dockerfile.dev ./client
+
+
+script:
+  - docker run alcpinto/react-test npm run test-coverage
+
+
+after_success:
+  - docker build -t alcpinto/multi-client ./client
+  - docker build -t alcpinto/multi-nginx ./nginx
+  - docker build -t alcpinto/multi-server ./server
+  - docker build -t alcpinto/multi-worker ./worker
+  # Login to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push alcpinto/multi-client
+  - docker push alcpinto/multi-nginx
+  - docker push alcpinto/multi-server
+  - docker push alcpinto/multi-worker
