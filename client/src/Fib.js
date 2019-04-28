@@ -15,13 +15,13 @@ class Fib extends Component {
 
   async fetchValues() {
     const values = await axios.get('/api/values/current');
-    if(seenIndexes (or values).data.includes("<!")) return
+    if(values.data.includes("<!")) return
     this.setState({ values: values.data });
   }
 
   async fetchIndexes() {
     const seenIndexes = await axios.get('/api/values/all');
-    if(seenIndexes (or values).data.includes("<!")) return
+    if(seenIndexes.data.includes("<!")) return
     this.setState({
       seenIndexes: seenIndexes.data
     });
